@@ -1,0 +1,108 @@
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" closed>
+    <h1>Options</h1>
+
+    <mat-list role="list" class="side-bar">
+      <mat-list-item role="listitem">Accueil</mat-list-item>
+      <mat-list-item role="listitem">Profil</mat-list-item>
+      <mat-list-item role="listitem">Employés</mat-list-item>
+
+    </mat-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="right-side">
+      <mat-icon aria-hidden="true" aria-label="Example home icon" (click)="drawer.toggle()">reorder</mat-icon>
+      <h1>Ressources humaines</h1>
+    </div>
+  </mat-drawer-content>
+
+
+  <mat-drawer-content>
+    <mat-toolbar>
+      <span>Liste d'employés</span>
+    </mat-toolbar>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
+    <mat-card>
+      <mat-form-field appearance="standard">
+        <mat-label>Filtre</mat-label>
+          <input class="test" matInput (keyup)="applyFilter($event)"  #input>
+      </mat-form-field>
+      <div class="divbtnAdd">
+        <button mat-raised-button color="primary" class="btnAdd" (click)="addEditWorker()">Ajouter</button>  
+      </div>
+
+      <table matSort mat-table [dataSource]="dataSource" class="mat-elevation-z5" >
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="id_worker" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Matricule </th>
+        <td mat-cell *matCellDef="let element"> {{element.id_worker}} </td>
+      </ng-container>
+      
+      <!-- Name Column -->
+      <ng-container matColumnDef="w_firstname" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Nom </th>
+        <td mat-cell *matCellDef="let element"> {{element.w_firstname}} </td>
+      </ng-container>
+    
+      <!-- Name Column -->
+      <ng-container matColumnDef="w_lastname" >
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Prénom</th>
+        <td mat-cell *matCellDef="let element"> {{element.w_lastname}} </td>
+      </ng-container>
+      
+      <!-- Weight Column -->
+      <ng-container matColumnDef="w_cell" >
+        <th mat-header-cell *matHeaderCellDef> Téléphone </th>
+        <td mat-cell *matCellDef="let element"> {{element.w_cell}} </td>
+      </ng-container>
+      
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="w_email" >
+        <th mat-header-cell *matHeaderCellDef> Courriel </th>
+        <td mat-cell *matCellDef="let element"> {{element.w_email}} </td>
+      </ng-container>
+      
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="w_address">
+        <th mat-header-cell *matHeaderCellDef> Adresse </th>
+        <td mat-cell *matCellDef="let element"> {{element.w_address}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="w_bday">
+        <th mat-header-cell *matHeaderCellDef> Date de naissance </th>
+        <td mat-cell *matCellDef="let element"> {{element.w_bday | date: 'dd/MM/yyyy'}} </td>
+      </ng-container>
+
+      <!-- Symbol Column (click)="addEditWorker(element.id_worker)" -->
+      <ng-container matColumnDef="modifier">
+        <th mat-header-cell *matHeaderCellDef> Modifier </th>
+        <td mat-cell *matCellDef="let element"> 
+          <mat-icon (click)="addEditWorker(element.id_worker)" class="btnEdit" matTooltip="Modifier">
+            edit
+          </mat-icon> 
+        </td>
+      </ng-container>
+
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="supprimer">
+        <th mat-header-cell *matHeaderCellDef> Supprimer </th>
+        <td mat-cell *matCellDef="let element"> 
+          <mat-icon (click)="deleteAWorker(element.id_worker)" class="btnDelete" matTooltip="Supprimer">
+            delete
+          </mat-icon>
+        </td>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+      </table>
+      <mat-paginator [pageSizeOptions]="[5,10,25,100]" aria-label="Selectionner page"></mat-paginator>
+    </mat-card>    
+  </mat-drawer-content>
+</mat-drawer-container>

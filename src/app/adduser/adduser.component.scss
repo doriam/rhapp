@@ -1,0 +1,31 @@
+.mat-form-field {
+    width: 100%;
+}
+
+.mat-form-field-infix {
+    display: flex;
+}
+
+
+.row {
+    display: flex;
+}
+
+.mat-input-7 {
+    display: flex;
+}
+
+.column {
+    flex: 45%;
+    margin: 0px;
+}
+
+.error {
+    color: #dc3545;
+    margin-top: -10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+}

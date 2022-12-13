@@ -1,0 +1,105 @@
+table {
+    margin: auto;
+    width: 80%;
+
+}
+
+.btnEdit,
+btnDelete {
+    cursor: pointer;
+}
+
+.btnDelete {
+    color: #ad2b0f;
+}
+
+.btnEdit {
+    color: #146dbb
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+}
+
+.divbtnAdd {
+    text-align: center;
+    margin: 10px;
+}
+
+.btnAdd {
+    width: 50%;
+}
+
+/* You can add global styles to this file, and also import other style files */
+
+.mat-toolbar {
+    width: 80%;
+    margin: auto;
+    background: local;
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: 600;
+}
+
+.container {
+    padding: 30px;
+
+}
+
+.mat-drawer {
+    position: fixed;
+    width: 200px;
+    height: 100% !important;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.mat-drawer-inner-container {
+    width: 400px !important;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.right-side {
+    padding: 15px !important;
+    background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+    display: flex !important;
+
+    h1 {
+        text-align: center !important;
+        padding: 0 !important;
+        margin: auto;
+    }
+}
+
+.mat-icon,
+.mat-list-item,
+h1 {
+    cursor: pointer !important;
+}
+
+.mat-icon {
+    font-size: 36px;
+}
+
+.mat-list-base {
+    padding-top: 30px !important;
+}
+
+.mat-list-base .mat-list-item .mat-list-item-content {
+    text-align: center !important;
+    display: block !important;
+    padding-top: 15px !important;
+}
+
+.mat-list-item-content:hover {
+    background-color: beige !important;
+}
+
+mat-form-field {
+    padding-left: 10%;
+    padding-right: 10%;
+}
