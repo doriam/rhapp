@@ -1,0 +1,48 @@
+.mat-toolbar {
+  width: 80%;
+  margin: auto;
+  justify-content: space-between;
+  background: local;
+}
+
+.row {
+  display: flex;
+}
+
+
+.column {
+  flex: 45%;
+  margin: 0px;
+}
+
+
+
+mat-card-header {
+  width: 50%;
+  margin: auto;
+  justify-content: center;
+}
+
+label {
+  margin-bottom: 15px;
+}
+
+.mat-grid-tile {
+  font-size: 16px;
+}
+
+mat-grid-list {
+  width: 50%;
+  margin: auto;
+  border-radius: 15px;
+  overflow: clip;
+}
+
+.profil {
+  transform: scale(8);
+}
+
+.rigth {
+  position: absolute;
+  right: 5px;
+}

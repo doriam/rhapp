@@ -1,0 +1,48 @@
+.example-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+}
+
+
+.mat-form-field {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+}
+
+.example-container {
+  text-align: center;
+}
+
+.titleForm {
+  margin-bottom: 20px;
+  background: dodgerblue;
+}
+
+.mat-toolbar {
+  justify-content: center;
+  background: #c2e9fb;
+
+}
+
+.buttonSubmit {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+span>span,
+span>span:hover {
+  color: rgb(56, 119, 236);
+  cursor: pointer;
+}
+
+::ng-deep .warning {
+  background: #e41e1e;
+}

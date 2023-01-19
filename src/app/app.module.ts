@@ -5,14 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrerComponent } from './registrer/registrer.component';
 
 
 //Components
 import { AdduserComponent } from './adduser/adduser.component';
-import { DeleteuserComponent } from './deleteuser/deleteuser.component';
-import { UpdateuserComponent } from './updateuser/updateuser.component';
 import { ListuserComponent } from './listuser/listuser.component';
+import { HomeComponent } from './home/home.component';
+import { ProfilComponent } from './profil/profil.component';
 
 //Angular material
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -35,19 +34,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 //Backend
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SidenavComponent } from './sidenav/sidenav.component';
+import { AddTokenInterceptor } from './utils/add-token.interceptor';
+
+import { JwtModule } from "@auth0/angular-jwt"
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegistrerComponent,
     AdduserComponent,
-    DeleteuserComponent,
-    UpdateuserComponent,
-    ListuserComponent
+    ListuserComponent,
+    SidenavComponent,
+    HomeComponent,
+    ProfilComponent
   ],
   imports: [
     BrowserModule,
@@ -75,11 +79,19 @@ import { HttpClientModule } from '@angular/common/http';
     MatProgressBarModule,
     MatSnackBarModule,
     MatProgressBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatGridListModule,
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => localStorage.getItem('token')
+      }
+    })
   ],
   providers: [{
-    provide: MAT_DATE_LOCALE, useValue: 'es'
+    provide: HTTP_INTERCEPTORS, useClass: AddTokenInterceptor, multi: true
   }],
   bootstrap: [AppComponent]
 })
+
+
 export class AppModule { }

@@ -1,0 +1,38 @@
+<mat-drawer-container>
+  <mat-drawer-content>
+    <mat-toolbar>
+      <span>Profil</span>
+      <button mat-button (click)="logOut()"><mat-icon>logout</mat-icon> Se déconnecter</button>
+    </mat-toolbar>
+    <mat-card>
+        <mat-card-header>
+          <mat-card-title> Bienvenue :  {{w_firstname}}  {{w_lastname}} !</mat-card-title>
+        </mat-card-header>
+
+      <mat-grid-list cols="3" rowHeight="50px">
+        <mat-grid-tile colspan="1" >
+          <div class="rigth"> Matricule</div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1" >{{id_worker}}</mat-grid-tile>
+        <mat-grid-tile rowspan="5"> <mat-icon class="profil">account_circle</mat-icon> </mat-grid-tile>
+        <mat-grid-tile colspan="1" >
+          <div class="rigth">Adresse :</div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1"  >{{w_adress}}</mat-grid-tile>
+        <mat-grid-tile colspan="1"  >
+          <div class="rigth">Téléphone :</div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1"  >{{w_cell}}</mat-grid-tile>
+        <mat-grid-tile colspan="1"  >
+          <div class="rigth">Courriel :</div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1"  >{{w_email}}</mat-grid-tile>
+        <mat-grid-tile colspan="1"  >
+          <div class="rigth">Date de naissance :</div>
+        </mat-grid-tile>
+        <mat-grid-tile colspan="1"  >{{w_bday | date: 'dd/MM/yyyy'}} </mat-grid-tile>
+      </mat-grid-list>
+    </mat-card>
+  </mat-drawer-content>
+
+</mat-drawer-container>

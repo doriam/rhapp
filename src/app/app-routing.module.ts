@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { ListuserComponent } from './listuser/listuser.component';
 import { LoginComponent } from './login/login.component';
-import { RegistrerComponent } from './registrer/registrer.component';
+import { ProfilComponent } from './profil/profil.component';
+import { AuthGuard } from './utils/auth.guard';
 
 const routes: Routes = [
-  { path: "", redirectTo: 'home', pathMatch: "full" },
-  { path: "login", component: LoginComponent, pathMatch: "full" },
-  { path: "registrer", component: RegistrerComponent, pathMatch: "full" },
-  { path: "list_users", component: ListuserComponent, pathMatch: "full" }
+  { path: "", component: HomeComponent, pathMatch: "full" },
+  { path: "login", component: LoginComponent },
+  { path: "profil", component: ProfilComponent, canActivate: [AuthGuard] },
+  { path: "list_users", component: ListuserComponent, canActivate: [AuthGuard] }
 
 ];
 

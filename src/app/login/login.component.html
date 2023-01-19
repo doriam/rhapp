@@ -1,20 +1,50 @@
-<div class="login">
-    <form class="custom-form" #miFormulario="ngForm" (ngSubmit)="login(miFormulario)" >
-      <h1>Login</h1>
-      <input
-        type="email"
-        name="email"
-        placeholder="Email"
-        required="required"
-        ngModel
-      />
-      <input
-        type="password"
-        name="password"
-        placeholder="Password"
-        required="required"
-        ngModel
-      />
-      <button type="submit">Log in</button>
-    </form>
-  </div>
+<mat-card class="example-card">
+    <!-- <form #miFormulario="ngForm" (ngSubmit)="login(miFormulario)" >-->
+    <!--<form #miFormulario="ngForm">-->
+      <div class="row">
+        <div class="example-container titleForm">
+          <mat-toolbar>
+            <span>Se connecter</span>
+          </mat-toolbar>
+        </div>
+      </div>
+      <div class="row">
+            <div class="example-container">
+              <mat-form-field appearance="fill">
+                <mat-label>Email</mat-label>
+                <input matInput [(ngModel)]="username" placeholder="pat@example.com" [formControl]="email" required>
+                  <button mat-icon-button matSuffix ><mat-icon>email</mat-icon></button>
+                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </div>
+      </div>
+      <div class="row">
+        <div class="example-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Mot de passe</mat-label>
+          <input matInput [(ngModel)]="password_u" [type]="hide ? 'password' : 'text'" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        </div>
+      </div>
+      <!--
+      <div class="row">
+          <div class="example-container">
+              <span> <span>Mot de passe oublié ?</span></span>
+          </div>
+      </div>
+      -->
+      <div class="row">
+        <div class="example-container buttonSubmit">
+          <button type="button" mat-raised-button color="primary"  (click)="login()" >Se connecter</button>
+        </div>
+      </div>
+      <div class="row">
+        <div class="example-container">
+          <span>Nouveau ? <span (click)="addWorkerAndUser('newWAndU')">Créez un compte</span></span>
+        </div>
+      </div>
+    <!--</form>-->
+</mat-card>

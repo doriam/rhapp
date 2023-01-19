@@ -12,11 +12,10 @@
             </mat-form-field>
             <div class="error">
                 <span *ngIf="form.get('id_worker')?.hasError('maxlength')">
-                    Le matricule ne doit pas dépasser <strong> 7 caractères</strong>
+                    Le matricule ne doit pas dépasser <strong> 7 caractères. </strong>
                 </span>
-                <br>
                 <span *ngIf="form.get('id_worker')?.hasError('pattern')">
-                    Le matricule doit seulement contenir des caratères <strong> numériques</strong>
+                    Le matricule doit seulement contenir des caratères <strong> numériques. </strong>
                 </span>
             </div>
     </div>
@@ -24,22 +23,22 @@
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Nom</mat-label>
-                <input formControlName="w_firstname" matInput placeholder="Saisissez le nom ">
+                <input formControlName="w_lastname" matInput placeholder="Saisissez le nom ">
             </mat-form-field>
             <div class="error">
                 <span *ngIf="form.get('w_firstname')?.hasError('maxlength')">
-                    Le nom ne doit pas dépasser <strong> 20 caractères</strong>
+                    Le nom ne doit pas dépasser <strong> 20 caractères. </strong>
                 </span>
             </div>
         </div>
         <div class="column">
             <mat-form-field appearance="fill">
                 <mat-label>Prénom</mat-label>
-                <input formControlName="w_lastname" matInput placeholder="Saisissez le prénom ">
+                <input formControlName="w_firstname" matInput placeholder="Saisissez le prénom ">
             </mat-form-field>
             <div class="error">
                 <span *ngIf="form.get('w_lastname')?.hasError('maxlength')">
-                    Le prénom ne doit pas dépasser <strong> 20 caractères</strong>
+                    Le prénom ne doit pas dépasser <strong> 20 caractères. </strong>
                 </span>
             </div>
         </div>
@@ -52,7 +51,7 @@
         </mat-form-field>
         <div class="error">
             <span *ngIf="form.get('w_address')?.hasError('maxlength')">
-                L'adresse ne doit pas dépasser <strong> 50 caractères</strong>
+                L'adresse ne doit pas dépasser <strong> 50 caractères. </strong>
             </span>
         </div>
     </div>
@@ -65,9 +64,8 @@
             </mat-form-field>
             <div class="error">
                 <span *ngIf="form.get('w_cell')?.hasError('maxlength')">
-                    Le numéro de téléphone ne doit pas dépasser <strong> 10 caractères</strong>
+                    Le numéro de téléphone ne doit pas dépasser <strong> 10 caractères. </strong>
                 </span>
-                <br>
                 <span *ngIf="form.get('w_cell')?.hasError('pattern')">
                     Le numéro de téléphone doit seulement contenir des caratères <strong> numériques</strong>
                 </span>
@@ -80,10 +78,10 @@
             </mat-form-field>
             <div class="error">
                 <span *ngIf="form.get('w_email')?.hasError('maxlength')">
-                    Le courriel ne doit pas dépasser <strong> 30 caractères</strong>
+                    Le courriel ne doit pas dépasser <strong> 30 caractères. </strong>
                 </span>
                 <span *ngIf="form.get('w_email')?.hasError('email')">
-                    Le courriel n'est pas dans format <strong> valide </strong>
+                    Le courriel n'est pas dans format <strong> valide. </strong>
                 </span>
             </div>
         </div>
@@ -95,12 +93,46 @@
             <mat-hint>MM/DD/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>    
-    </div> 
+        </mat-form-field>
+    </div>
+
+    <div class="newUser" *ngIf="todo=='newWAndU'">
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="fill">
+              <mat-label>Confirmez votre courriel</mat-label>
+              <input formControlName="u_email" matInput placeholder="Courriel ">
+          </mat-form-field>
+          <div class="error">
+              <span *ngIf="form.get('u_email')?.hasError('maxlength')">
+                  Le courriel ne doit pas dépasser <strong> 30 caractères. </strong>
+              </span>
+              <span *ngIf="form.get('u_email')?.hasError('email')">
+                  Le courriel n'est pas dans format <strong> valide. </strong>
+              </span>
+              <span id="span_confirmEmail" *ngIf="form.get('w_email')?.value !=form.get('u_email')?.value ">
+                Vous devez <strong> confirmer votre mail</strong>
+              </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="column">
+          <mat-form-field appearance="fill">
+            <mat-label>Mot de passe</mat-label>
+            <input formControlName="u_password" matInput [type]="hide ? 'password' : 'text'" required>
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button type="button" (click)="cancel()" mat-button >Annuler</button>
-  <button [disabled]="form.invalid"  type="submit"  mat-button >Enregistrer</button>
+  <button id="mainButton" [disabled]="form.invalid"  type="submit"  mat-button >Enregistrer</button>
 </mat-dialog-actions>
 
 </form>

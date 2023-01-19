@@ -1,0 +1,25 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <div class="row"><h1>Bienvenue !</h1></div>
+  </mat-card-header>
+  <mat-card-content>
+
+    <p>
+      Avec cette application vous allez pouvoir :
+      <mat-list role="list">
+        <mat-list-item role="listitem"><mat-icon>check_circle</mat-icon>Se connecter et déconnecter</mat-list-item>
+        <mat-list-item role="listitem"><mat-icon>check_circle</mat-icon>Créer des utilisateurs</mat-list-item>
+        <mat-list-item role="listitem"><mat-icon>check_circle</mat-icon>Ajouter, modifier ou supprimer l'information des employés de la base de données</mat-list-item>
+      </mat-list>
+
+    </p>
+
+  </mat-card-content>
+  <mat-card-actions  *ngIf="tokenid==undefined">
+    <button mat-button (click)="btnConnecter()">Se connecter</button>
+    <button mat-button (click)="btnCreer('newWAndU')">Créer un compte</button>
+  </mat-card-actions>
+  <mat-card-actions *ngIf="tokenid">
+    <button mat-button (click)="btnList()">Allons-y !</button>
+  </mat-card-actions>
+</mat-card>
